@@ -1,0 +1,134 @@
+<nav class="bg-white shadow-lg fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+    
+    <!-- Left: Logo -->
+    <a routerLink="home" class="flex items-center text-3xl font-extrabold text-gray-900 hover:text-green-600 transition-transform duration-300 transform hover:scale-105">
+      <img src="assets/images/freshcart-logo.svg" class="h-12 mr-4" alt="FreshCart Logo">
+    </a>
+    
+    <!-- Mobile menu button -->
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-gray-500 rounded-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-transform transform hover:scale-110">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+
+    <!-- Center: Navigation Links -->
+    <div class="hidden md:flex md:space-x-8">
+      <ul class="flex items-center space-x-8 font-medium">
+        @if (isLogin == true) {
+        <li>
+          <a routerLink="home" routerLinkActive="active" class="text-gray-700 hover:text-green-600 transition-colors duration-300">Home</a>
+        </li>
+        <li>
+          <a routerLink="products" routerLinkActive="active" class="text-gray-700 hover:text-green-600 transition-colors duration-300">Products</a>
+        </li>
+        <li>
+          <a routerLink="categories" routerLinkActive="active" class="text-gray-700 hover:text-green-600 transition-colors duration-300">Categories</a>
+        </li>
+        <li>
+          <a routerLink="brands" routerLinkActive="active" class="text-gray-700 hover:text-green-600 transition-colors duration-300">Brands</a>
+        </li>
+        <li>
+          <a routerLink="wishlist" routerLinkActive="active" class="text-gray-700 hover:text-green-600 transition-colors duration-300">Wish List</a>
+        </li>
+        <li>
+          <a routerLink="cart" routerLinkActive="active" class="text-gray-700 hover:text-green-600 transition-colors duration-300">Cart</a>
+        </li>
+        <li>
+          <a href="#" class="relative text-[#46CA61] transition-all duration-300 ease-in-out hover:text-[#35BF44]">
+            <i class="fa fa-cart-plus text-2xl">
+              <span class="absolute -top-2 -right-3 bg-[#46CA61] text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
+                {{ CartCount }}
+              </span>
+            </i>
+          </a>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Right: Social Media Icons & Sign Out -->
+    <div class="hidden md:flex items-center space-x-4">
+      <!-- Social Media Icons -->
+      <a href="#" class="text-gray-700 hover:text-pink-500 text-xl transition-transform transform hover:scale-110 duration-300">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" class="text-gray-700 hover:text-blue-600 text-xl transition-transform transform hover:scale-110 duration-300">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="#" class="text-gray-700 hover:text-black text-xl transition-transform transform hover:scale-110 duration-300">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="#" class="text-gray-700 hover:text-blue-400 text-xl transition-transform transform hover:scale-110 duration-300">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" class="text-gray-700 hover:text-blue-700 text-xl transition-transform transform hover:scale-110 duration-300">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="#" class="text-gray-700 hover:text-red-600 text-xl transition-transform transform hover:scale-110 duration-300">
+        <i class="fab fa-youtube"></i>
+      </a>
+      
+      @if (isLogin == false) {
+      <a routerLink="register" routerLinkActive="active" class="text-gray-700 hover:text-green-500 font-semibold text-lg transition-colors duration-300">Register</a>
+      <a routerLink="login" routerLinkActive="active" class="text-gray-700 hover:text-green-500 font-semibold text-lg transition-colors duration-300">Login</a>
+      }@else{
+      <a (click)="_AuthhService.logOut()" class="text-gray-700 hover:text-red-600 font-semibold text-lg cursor-pointer transition-colors duration-300">Sign Out</a>
+      }
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden" id="navbar-default" class="hidden transition-opacity duration-300 ease-in-out">
+    <ul class="flex flex-col items-center font-medium p-4 border-t">
+      @if (isLogin == true) {
+      <li>
+        <a routerLink="home" routerLinkActive="active" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-green-600 transition-colors duration-300 flex items-center">
+          <i class="fas fa-home mr-2"></i> Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="products" routerLinkActive="active" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-green-600 transition-colors duration-300 flex items-center">
+          <i class="fas fa-box mr-2"></i> Products
+        </a>
+      </li>
+      <li>
+        <a routerLink="categories" routerLinkActive="active" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-green-600 transition-colors duration-300 flex items-center">
+          <i class="fas fa-th mr-2"></i> Categories
+        </a>
+      </li>
+      <li>
+        <a routerLink="brands" routerLinkActive="active" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-green-600 transition-colors duration-300 flex items-center">
+          <i class="fas fa-tag mr-2"></i> Brands
+        </a>
+      </li>
+      <li>
+        <a routerLink="wishlist" routerLinkActive="active" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-green-600 transition-colors duration-300 flex items-center">
+          <i class="fas fa-heart mr-2"></i> Wish List
+        </a>
+      </li>
+      <li>
+        <a routerLink="cart"  routerLinkActive="active" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-green-600 transition-colors duration-300 flex items-center">
+          <i class="fas fa-cart-plus mr-2"></i> Cart
+        </a>
+      </li>
+      <li>
+        <a (click)="_AuthhService.logOut()" class="py-2 pl-3 pr-4 text-gray-700 rounded hover:text-red-600 transition-colors duration-300 flex items-center cursor-pointer">
+          <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
+        </a>
+      </li>
+      <li>
+        <a href="#" class="relative text-[#46CA61] transition-all duration-300 ease-in-out hover:text-[#35BF44]">
+          <i class="fa fa-cart-plus text-2xl">
+            <span class="absolute -top-2 -right-3 bg-[#46CA61] text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center animate-bounce">
+              {{ CartCount }}
+            </span>
+          </i>
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+</nav>

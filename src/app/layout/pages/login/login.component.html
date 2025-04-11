@@ -1,0 +1,72 @@
+<div class="register p-0">
+    <div class="container">
+      <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="container mx-auto">
+        @if (errMsg) {
+          <div class="alert">
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <p class="m-0 p-0">{{errMsg}}</p>
+            </div>
+          </div>
+        }
+  
+        <!-- Email Input -->
+        <div class="relative z-0 w-full mb-10 group">
+          <input formControlName="email" type="email" id="email"
+            class="form-input dark:focus:border-[#0aad0a] focus:outline-none focus:ring-0 focus:border-[#0aad0a] peer"
+            placeholder=" " required />
+          <label for="email"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-[#0aad0a] peer-focus:dark:text-[#0aad0a] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+          @if(loginForm.get('email')?.errors && loginForm.get('email')?.touched){
+            <div class="alert">
+              @if(loginForm.get('email')?.errors?.['required'] ){
+                <p class="p-0">Email is required.</p>
+              }
+              @else if(loginForm.get('email')?.errors?.['email'] ){
+                <p class="p-0">Email Must be user"&#64;"gmail.com</p>
+              }
+            </div>
+          }
+        </div>
+  
+        <!-- Password Input -->
+        <div class="relative z-0 w-full mb-10 group">
+          <input formControlName="password" type="password" id="password"
+            class="form-input dark:focus:border-[#0aad0a] focus:outline-none focus:ring-0 focus:border-[#0aad0a] peer"
+            placeholder=" " required />
+          <label for="password"
+            class="form-label">Password</label>
+          @if(loginForm.get('password')?.errors && loginForm.get('password')?.touched){
+            <div class="alert">
+              @if(loginForm.get('password')?.errors?.['required']){
+                <p class="p-0">Password is required.</p>
+              }
+              @else if(loginForm.get('password')?.errors?.['pattern']){
+                <p class="p-0">Password Must be Strong & include[a-z][A-Z],[0-9], Special Charcters.</p>
+              }
+            </div>
+          }
+        </div>
+          
+        <!-- Submit Button -->
+        <button [disabled]="loginForm.invalid" type="submit"
+          class="btn-sub text-white text-2xl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg w-full sm:w-auto px-10 py-2.5 text-center float-end">
+          @if(isLoading) {
+            <span><i class="fa fa-spin fa-spinner"></i></span>
+          } @else {
+            <span>LOGIN</span>
+          }
+        </button>
+        <div class="flex justify-start mt-2">
+          <a routerLink="/forgetpassword" class="text-sm text-[#0aad0a] hover:text-[#088f08] font-bold transition duration-200 ease-in-out">
+            Forget Password?
+          </a>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+  

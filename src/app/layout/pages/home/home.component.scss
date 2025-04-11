@@ -1,0 +1,25 @@
+h2 {
+    color: #0AAD0A;
+    text-align: left;
+    margin: 10px 0;
+    font-size: 24px; /* Slightly larger font size for a more impactful header */
+    font-weight: bold; /* Adds emphasis to the header */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+    animation: glow 4s ease-in-out infinite alternate; /* Smooth and alternating animation */
+}
+
+@keyframes glow {
+    0% {
+        color: #0AAD0A;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        color: #0ABDA0;
+        text-shadow: 4px 4px 15px rgba(0, 170, 10, 0.6);
+    }
+    100% {
+        color: #0AAD0A;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+}

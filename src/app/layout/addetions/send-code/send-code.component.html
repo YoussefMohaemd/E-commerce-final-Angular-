@@ -1,0 +1,54 @@
+<div class="Code-form">
+    <div class="  w-3/4 mx-auto">
+      @if(codeFormFlage){
+        @if (errMsg) {
+            <div class="alert">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <p class="m-0 p-0">{{errMsg}}</p>
+              </div>
+            </div>
+          }
+    
+        <h2 class=" text-lg font-semibold my-3">Code Form</h2> 
+
+        <form [formGroup]="codeForm" (ngSubmit)=" submitCodeForm()">
+
+                <div class="relative z-0 w-full mb-10 group">
+              <input formControlName="resetCode" type="text" id="resetCode"
+                class="form-input dark:focus:border-[#0aad0a] focus:outline-none focus:ring-0 focus:border-[#0aad0a] peer"
+                placeholder=" " required />
+              <label for="resetCode"
+                class="form-label">CODE</label>
+                @if(codeForm.get('resetCode')?.errors && codeForm.get('resetCode')?.touched){
+                    <div class="alert">
+                      @if(codeForm.get('resetCode')?.errors?.['required'] ){
+                        <p class="p-0">resetCode is required.</p>
+                      }
+                      @else if(codeForm.get('resetCode')?.errors?.['pattern'] ){
+                        <p class="p-0">Code Must max 8 Numbers</p>
+                      }
+                    </div>
+                  }
+                <button  [disabled]="codeForm.invalid"  class="btn-sub my-5 text-white text-2xl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg w-full sm:w-auto px-10 py-2.5 text-center float-end">
+                @if(isLoading) {
+                    <span><i class="fa fa-spin fa-spinner"></i></span>
+                  } @else {
+                    <span>Submit</span>
+                  }
+                </button>
+            </div>
+       
+        
+        </form>
+      }
+        @if(newPasswordFormFlage){
+          <app-resetpassword></app-resetpassword>
+    
+        }
+    
+    </div>
+
+</div>

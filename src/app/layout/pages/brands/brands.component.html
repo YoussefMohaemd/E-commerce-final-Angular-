@@ -1,0 +1,27 @@
+@if (isLoading) {
+    <div class="h-screen flex justify-center items-center">
+      <div class="loader"></div>
+    </div>
+  } @else {
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-12">
+      
+      <!-- Animated H1 -->
+      <h1 class="text-4xl font-extrabold text-[#35C044] my-16 animate-pulse transform transition-transform duration-500 hover:scale-110">
+        ALL BRANDS
+      </h1>
+  
+      <div class="container mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        @for (brand of brands; track $index) {
+          <div class="relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+            <div class="flex items-center justify-center h-48 bg-gray-50">
+              <img [src]="brand.image" alt="{{brand.name}}" class="max-h-32 object-contain transition-opacity duration-300"/>
+            </div>
+            <div class="p-4 bg-[#35C044]">
+              <h3 class="text-lg font-bold text-white text-center">{{brand.name}}</h3>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+  

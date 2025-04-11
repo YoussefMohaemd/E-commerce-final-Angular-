@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Encode+Sans+Expanded:wght@300&family=Pacifico&family=Righteous&display=swap');
+
+
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1.154;
+  position: relative;
+  background: conic-gradient(from 120deg at 50% 64%,#0000, #25b09b 1deg 120deg,#0000 121deg);
+  animation: l27-0 1.5s infinite cubic-bezier(0.3,1,0,1);
+}
+.loader:before,
+.loader:after {
+  content:'';
+  position: absolute;
+  inset:0;
+  background:inherit;
+  transform-origin: 50% 66%;
+  animation: l27-1 1.5s infinite;
+}
+.loader:after {
+  --s:-1;
+}
+@keyframes l27-0 {
+   0%,30%      {transform: rotate(0)}
+   70%         {transform: rotate(120deg)}
+   70.01%,100% {transform: rotate(360deg)}
+}
+@keyframes l27-1 {
+   0%      {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
+   30%,70% {transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px)}
+   100%    {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
+}
+@keyframes l27 {
+  100% {transform: rotate(1turn)}
+}
+
+.row{
+  @apply flex flex-wrap
+}
+
+.register{
+
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100vh;
+}
+.btn-sub {
+  color: #ffffff;
+  background: linear-gradient(to right, rgba(110, 231, 183, 0.9), rgba(10, 173, 10, 0.9));
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.btn-sub:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, rgba(10, 173, 10, 0.9), rgba(110, 231, 183, 0.9));
+}
+
+
+.product button{
+  transform: translateY(100%);
+ opacity: 0;
+ transition: all 0.5s;
+
+}
+
+
+.product:hover button{
+  opacity: 1;
+
+  transform: translateY(0%);
+
+}
+
+
+.alert {
+  @apply 
+    bg-gradient-to-r from-red-500 to-red-600 
+    text-white p-2 m-0 rounded-lg 
+    shadow-xl transform 
+    transition-transform duration-300 ease-in-out 
+    hover:scale-105;
+}
+
+.form-input {
+  @apply 
+    block w-full px-0 py-2.5 text-sm text-gray-900 bg-transparent appearance-none
+    border-0 border-b-2 border-gray-300 
+    dark:text-white dark:border-gray-600 dark:focus:border-[#0aad0a] 
+    focus:outline-none focus:ring-0 focus:border-[#0aad0a]
+    transition-colors duration-300 ease-in-out;
+}
+.form-label {
+  @apply 
+    absolute top-3 -z-10 
+    text-sm text-gray-500 dark:text-gray-400 
+    transform origin-[0] scale-75 
+    transition-all duration-300 ease-in-out
+    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+    peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto 
+    peer-focus:text-[#0aad0a] peer-focus:dark:text-[#0aad0a] 
+    peer-focus:scale-75 peer-focus:-translate-y-6;
+}
+
+
+:root {
+  --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Encode Sans Expanded", sans-serif;
+  --rating-color: #ffc908;
+}
+
+body {
+  font-family: var(--font-family) !important;
+}
+
+.nav-link {
+  transition: unset !important;
+}
+.active-link {
+  background-color: var(--main-color) !important;
+  color: var(--light-color) !important;
+  border-radius: 5px;
+}
+
+.rating-color {
+  color: var(--rating-color);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+a,
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.product {
+  border-radius: 5px;
+  transition: box-shadow 0.5s;
+  overflow: hidden;
+}
+
+.product:hover {
+  box-shadow: 0 0 10px var(--main-color);
+
+}
+
+.font-sm {
+  font-size: 12px;
+}
+.text-main {
+  color: var(--main-color);
+}
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+.bg-main-light {
+  background-color: var(--light-color) !important;
+}
+.btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+.btn-main:hover {
+  background-color: #11bd11;
+}
+
+

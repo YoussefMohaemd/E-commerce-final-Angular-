@@ -1,0 +1,96 @@
+<div class="container mx-auto ">
+  <div class="flex items-center justify-center">
+    <form [formGroup]="ShippingAddress" (ngSubmit)="orderNow()" class="w-full ">
+      
+  
+       
+
+      <div class="relative z-0 w-full  mb-10 mt-52 group">
+        <input formControlName="detials" type="text" id="detials"
+          class="form-input dark:focus:border-[#0aad0a] focus:outline-none focus:ring-0 focus:border-[#0aad0a] peer"
+          placeholder="" required />
+        <label for="detials"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-[#0aad0a] peer-focus:dark:text-[#0aad0a] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Detials</label>
+        @if(ShippingAddress.get('detials')?.errors && ShippingAddress.get('detials')?.touched){
+          <div class="alert text-red-500 text-sm mt-2">
+ 
+              <p class="p-0">Details are required.</p>
+            
+          </div>
+        }
+      </div>
+       
+      
+      <div class="relative z-0 w-full mb-10 group">
+        <input formControlName="phone" type="tel" id="phone"
+          class="form-input dark:focus:border-[#0aad0a] focus:outline-none focus:ring-0 focus:border-[#0aad0a] peer"
+          placeholder=" " required />
+        <label for="phone"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-[#0aad0a] peer-focus:dark:text-[#0aad0a] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone</label>
+        @if(ShippingAddress.get('phone')?.errors && ShippingAddress.get('phone')?.touched){
+          <div class="alert text-red-500 text-sm mt-2">
+            @if(ShippingAddress.get('phone')?.errors?.['required']){
+              <p class="p-0">Phone is required.</p>
+            }
+            @else if(ShippingAddress.get('phone')?.errors?.['pattern']){
+              <p class="p-0">Phone must be an Egyptian number.</p>
+            }
+          </div>
+        }
+      </div>
+      
+
+      <div class="relative z-5 w-full  mb-10  group">
+        <input formControlName="city" type="text" id="city"
+          class="form-input dark:focus:border-[#0aad0a] focus:outline-none focus:ring-0 focus:border-[#0aad0a] peer"
+          placeholder=" " required />
+        <label for="city"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-[#0aad0a] peer-focus:dark:text-[#0aad0a] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">City</label>
+        @if(ShippingAddress.get('city')?.errors && ShippingAddress.get('city')?.touched){
+          <div class="alert text-red-500 text-sm mt-2">
+        
+              <p class="p-0">City is required.</p>
+  
+
+          </div>
+        }
+
+      </div>
+
+     
+      
+      
+
+       
+    <div class="flex justify-between items-center">
+      <div class="relative inline-block text-left w-64">
+        <label for="paymentOption" class="block text-gray-700 font-medium mb-2">Payment Method:</label>
+        <div class="relative">
+          <select id="paymentOption" (change)="onPaymentMethodChange($event)"
+                  class="block w-full pl-4 pr-12 py-3 text-base font-semibold text-gray-800 bg-white border-2 border-transparent rounded-full shadow-sm focus:outline-none focus:border-[#51D073] focus:ring-2 focus:ring-[#51D073] hover:border-[#51D073] transition-all duration-300 cursor-pointer appearance-none">
+            <option value="online">Online Payment</option>
+            <option value="cash">Cash Order</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+            <svg class="h-5 w-5 text-[#51D073]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 12a1 1 0 01-.707-.293l-4-4a1 1 0 011.414-1.414L10 9.586l3.293-3.293a1 1 0 111.414 1.414l-4 4A1 1 0 0110 12z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+
+      <button [disabled]="ShippingAddress.invalid" type="submit"
+        class="btn-sub bg-[#0aad0a] hover:bg-[#35BF44] text-white text-2xl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg w-full sm:w-auto px-10 py-2.5 text-center float-end">
+        @if(isLoading) {
+          <span><i class="fa fa-spin fa-spinner"></i></span>
+        } @else {
+          <span>Payment Now</span>
+        }
+      </button>
+
+    </div>
+    
+    </form>
+  </div>
+</div>

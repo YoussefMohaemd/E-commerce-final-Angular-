@@ -1,0 +1,22 @@
+<section class="">
+    @if (isLoading) {
+
+        <div class="row items-center justify-center">
+            <div class="loader text-lg"></div>
+           </div>
+    }@else{
+        
+    <owl-carousel-o [options]="customOptions">
+        @for (category of CategoryList; track $index) {
+           <ng-template carouselSlide [id]="category._id">
+             <img [src]="category.image" [alt]="category.name" [title]="category.name">
+           </ng-template>
+        }
+       </owl-carousel-o>
+       
+    
+    }
+    
+    
+
+</section>

@@ -1,0 +1,12 @@
+.btn-sub {
+    color: #ffffff;
+    background: linear-gradient(to right, rgba(110, 231, 183, 0.9), rgba(10, 173, 10, 0.9));
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-sub:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, rgba(10, 173, 10, 0.9), rgba(110, 231, 183, 0.9));
+}
